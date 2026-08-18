@@ -25,12 +25,9 @@ A Spring Boot application that scrapes job listings from multiple job portals an
 
 ```text
 src/main/java
+├── config
 ├── controller
 ├── service
-├── scraper
-├── model
-├── dto
-├── config
 └── JobScraperApplication.java
 ```
 
