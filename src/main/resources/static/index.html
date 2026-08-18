@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,15 +9,18 @@
     <!-- Google Fonts: Inter & Outfit -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
     <style>
         :root {
             --bg-color: #0b0f19;
             --card-bg: rgba(17, 25, 40, 0.75);
             --border-color: rgba(255, 255, 255, 0.08);
             --accent-glow: rgba(6, 182, 212, 0.15);
-            --primary: #06b6d4; /* Cyan */
+            --primary: #06b6d4;
+            /* Cyan */
             --primary-hover: #0891b2;
             --text-main: #f3f4f6;
             --text-muted: #9ca3af;
@@ -37,7 +41,7 @@
             flex-direction: column;
             align-items: center;
             overflow-x: hidden;
-            background-image: 
+            background-image:
                 radial-gradient(at 0% 0%, rgba(6, 182, 212, 0.1) 0px, transparent 50%),
                 radial-gradient(at 100% 100%, rgba(99, 102, 241, 0.08) 0px, transparent 50%);
         }
@@ -166,7 +170,7 @@
             user-select: none;
         }
 
-        .source-pill-label input:checked + .source-pill-text {
+        .source-pill-label input:checked+.source-pill-text {
             color: #0b0f19;
             background: var(--primary);
             border-color: var(--primary);
@@ -422,26 +426,35 @@
         }
 
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
         @media (max-width: 640px) {
             .search-form {
                 flex-direction: column;
             }
+
             .search-button {
                 padding: 1.1rem;
                 justify-content: center;
             }
+
             .job-card {
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 1.25rem;
             }
+
             .job-details {
                 max-width: 100%;
             }
+
             .apply-btn {
                 width: 100%;
                 justify-content: center;
@@ -449,6 +462,7 @@
         }
     </style>
 </head>
+
 <body>
     <header>
         <div class="logo">QUANTUM</div>
@@ -457,23 +471,23 @@
     <main>
         <section class="hero-section">
             <h1>Dynamic Web Scraper</h1>
-            <p>Enter any query below to pull real-time job listings directly from external source boards via headless browser automation.</p>
+            <p>Enter any query below to pull real-time job listings directly from external source boards via headless
+                browser automation.</p>
         </section>
 
         <section class="search-container">
             <form class="search-form" id="searchForm" onsubmit="performSearch(event)">
                 <div class="input-wrapper">
-                    <input 
-                        type="text" 
-                        class="search-input" 
-                        id="queryInput" 
-                        placeholder="Search by job title or keyword (e.g. Java, Python, Frontend)..." 
-                        required
-                        autocomplete="off"
-                    >
+                    <input type="text" class="search-input" id="queryInput"
+                        placeholder="Search by job title or keyword (e.g. Java, Python, Frontend)..." required
+                        autocomplete="off">
                 </div>
                 <button type="submit" class="search-button">
-                    <svg style="width: 18px; height: 18px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    <svg style="width: 18px; height: 18px;" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
                     Search
                 </button>
             </form>
@@ -483,10 +497,7 @@
                     <input type="checkbox" id="srcArbeitnow" value="Arbeitnow" checked>
                     <span class="source-pill-text">Arbeitnow</span>
                 </label>
-                <label class="source-pill-label">
-                    <input type="checkbox" id="srcWWR" value="WeWorkRemotely" checked>
-                    <span class="source-pill-text">WeWorkRemotely</span>
-                </label>
+
                 <label class="source-pill-label">
                     <input type="checkbox" id="srcLinkedIn" value="LinkedIn">
                     <span class="source-pill-text">LinkedIn</span>
@@ -509,7 +520,7 @@
         <!-- Results Grid -->
         <section class="results-section" id="resultsSection">
             <h2 class="results-title">
-                Scraped Listings 
+                Scraped Listings
                 <span class="results-count" id="resultsCount">0 found</span>
             </h2>
             <div class="results-grid" id="resultsGrid">
@@ -521,14 +532,13 @@
     <script>
         async function performSearch(event) {
             event.preventDefault();
-            
+
             const query = document.getElementById('queryInput').value.trim();
             if (!query) return;
 
             // Read selected sources
             const selectedSources = [];
             if (document.getElementById('srcArbeitnow').checked) selectedSources.push('Arbeitnow');
-            if (document.getElementById('srcWWR').checked) selectedSources.push('WeWorkRemotely');
             if (document.getElementById('srcLinkedIn').checked) selectedSources.push('LinkedIn');
 
             if (selectedSources.length === 0) {
@@ -551,13 +561,13 @@
             try {
                 // Fetch dynamic data from the primary scrape route with selected sources filter
                 const response = await fetch(`/api/scrape?query=${encodeURIComponent(query)}&sources=${selectedSources.join(',')}`);
-                
+
                 if (!response.ok) {
                     throw new Error('Scrape failed with status: ' + response.status);
                 }
 
                 const jobs = await response.json();
-                
+
                 loader.style.display = 'none';
 
                 if (!jobs || jobs.length === 0) {
@@ -613,4 +623,5 @@
         }
     </script>
 </body>
+
 </html>
