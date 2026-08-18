@@ -70,8 +70,8 @@ public class HybridScraperService {
                 if (selectAll || selectedSources.stream().anyMatch(s -> s.equalsIgnoreCase("WeWorkRemotely"))) {
                     Map<String, String> s2 = new HashMap<>();
                     s2.put("name", "WeWorkRemotely");
-                    s2.put("url", "https://weworkremotely.com/remote-jobs?search_term=" + URLEncoder.encode(query, StandardCharsets.UTF_8));
-                    s2.put("selector", ".jobs-container, body");
+                    s2.put("url", "https://weworkremotely.com/remote-jobs/search?term=" + URLEncoder.encode(query, StandardCharsets.UTF_8));
+                    s2.put("selector", "section.jobs, .jobs-container, body");
                     sources.add(s2);
                 }
 
