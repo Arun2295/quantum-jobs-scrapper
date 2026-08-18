@@ -57,4 +57,4 @@ ENV PORT=8081
 EXPOSE 8081
 
 # Run the Spring Boot application, dynamically overriding the server port with Railway's PORT env var
-ENTRYPOINT ["java", "-jar", "-Dserver.port=${PORT}", "app.jar"]
+ENTRYPOINT java -jar -Dserver.port=${PORT} app.jar
