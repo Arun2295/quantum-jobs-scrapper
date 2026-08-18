@@ -38,6 +38,15 @@ RUN apt-get update && apt-get install -y \
     libasound2 \
     libpango-1.0-0 \
     libcairo2 \
+    libxfixes3 \
+    libx11-6 \
+    libx11-xcb1 \
+    libxcb1 \
+    libxcursor1 \
+    libxext6 \
+    libxrender1 \
+    libxtst6 \
+    libuuid1 \
     ca-certificates \
     fonts-liberation \
     --no-install-recommends && \
