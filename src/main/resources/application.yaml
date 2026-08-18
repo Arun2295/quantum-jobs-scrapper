@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: scraper
+
+server:
+  port: 8081
